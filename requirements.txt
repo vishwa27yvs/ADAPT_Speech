@@ -1,6 +1,10 @@
 git+https://github.com/huggingface/datasets.git
 git+https://github.com/huggingface/transformers.git
 jiwer
-torch 
+torch
 torchaudio
 librosa
+numpy==1.19.3
+scikit-learn==0.24.2
+matplotlib==3.3.4
+git+https://github.com/geoopt/geoopt.git
