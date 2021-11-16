@@ -24,7 +24,7 @@ Example command:	!cp /data_files/train_shemo.csv /data/train.csv
 
 ## Training
 - model_run.py includes processing and trainging functions used by the model.
-- For trying different hyperbolic variants:(HVIB, HVIB-C and ADAPT-VIB), change self.c in Wav2Vec2ClassificationHeadViBERTHyperbolic() accordingly. Dataset-specific hyperbolicity can also be changed here.
+- For trying different hyperbolic variants:(HVIB, HVIB-C and ADAPT-VIB), change self.c in Wav2Vec2ClassificationHeadViBERTHyperbolic(...) {lines:575-582} accordingly. Dataset-specific hyperbolicity can also be changed here.
 - To run base model or VIB replace trainer_hyp_vib.train() with trainer_base.train() and trainer_hyp_vib.train() respectively.
 
 
