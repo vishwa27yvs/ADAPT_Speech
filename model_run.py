@@ -357,8 +357,6 @@ class Wav2Vec2ForSpeechClassificationViBERT(Wav2Vec2PreTrainedModel):
             self.mu_p = nn.Parameter(torch.randn(self.ib_dim))
             self.std_p = nn.Parameter(torch.randn(self.ib_dim))
 
-            ## TRY CHANGING THIS IF RESULTS NOT UP TO THE MARK
-
             #self.classifier = nn.Linear(self.ib_dim, self.config.num_labels)
         self.classifier = Wav2Vec2ClassificationHeadViBERT(config)
 
@@ -482,7 +480,6 @@ class Wav2Vec2ForSpeechClassificationViBERT(Wav2Vec2PreTrainedModel):
               loss= ce_loss + (self.beta*kl_loss)
 
         else:
-          # print("dont print this - not this section")
           logits = self.classifier(hidden_states)
 
           loss = None
@@ -956,5 +953,4 @@ trainer_hyp_vib = Trainer(
 )
 
 # Training
-trainer_base.train() # euc shemo
-
+trainer_base.train()
