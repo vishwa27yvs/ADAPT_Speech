@@ -306,7 +306,7 @@ from transformers.models.wav2vec2.modeling_wav2vec2 import (
     Wav2Vec2Model
 )
 
-class Wav2Vec2ClassificationHeadViBERT(nn.Module):
+class Wav2Vec2ClassificationHeadVib(nn.Module):
     """Head for wav2vec classification task."""
 
     def __init__(self, config):
@@ -327,7 +327,7 @@ class Wav2Vec2ClassificationHeadViBERT(nn.Module):
         return x
 
 
-class Wav2Vec2ForSpeechClassificationViBERT(Wav2Vec2PreTrainedModel):
+class Wav2Vec2ForSpeechClassificationVib(Wav2Vec2PreTrainedModel):
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -358,7 +358,7 @@ class Wav2Vec2ForSpeechClassificationViBERT(Wav2Vec2PreTrainedModel):
             self.std_p = nn.Parameter(torch.randn(self.ib_dim))
 
             #self.classifier = nn.Linear(self.ib_dim, self.config.num_labels)
-        self.classifier = Wav2Vec2ClassificationHeadViBERT(config)
+        self.classifier = Wav2Vec2ClassificationHeadVib(config)
 
         self.init_weights()
 
@@ -527,7 +527,7 @@ from transformers.models.wav2vec2.modeling_wav2vec2 import (
     Wav2Vec2Model
 )
 
-class Wav2Vec2ClassificationHeadViBERTHyperbolic(nn.Module):
+class Wav2Vec2ClassificationHeadVibHyperbolic(nn.Module):
     """Head for wav2vec classification task."""
 
     def __init__(self, config):
@@ -546,7 +546,7 @@ class Wav2Vec2ClassificationHeadViBERTHyperbolic(nn.Module):
         return x
 
 
-class Wav2Vec2ForSpeechClassificationViBERTHyperbolic(Wav2Vec2PreTrainedModel):
+class Wav2Vec2ForSpeechClassificationVibHyperbolic(Wav2Vec2PreTrainedModel):
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -589,7 +589,7 @@ class Wav2Vec2ForSpeechClassificationViBERTHyperbolic(Wav2Vec2PreTrainedModel):
             self.mu_p = nn.Parameter(torch.randn(self.ib_dim))
             self.std_p = nn.Parameter(torch.randn(self.ib_dim))
 
-        self.classifier = Wav2Vec2ClassificationHeadViBERTHyperbolic(config)
+        self.classifier = Wav2Vec2ClassificationHeadVibHyperbolic(config)
 
         self.init_weights()
 
@@ -876,11 +876,11 @@ from transformers import PreTrainedModel
 def model_init():
    return Wav2Vec2ForSpeechClassification.from_pretrained(model_name_or_path,config=config)
 
-def model_init_vibert():
-   return Wav2Vec2ForSpeechClassificationViBERT.from_pretrained(model_name_or_path,config=config)
+def model_init_vib():
+   return Wav2Vec2ForSpeechClassificationVib.from_pretrained(model_name_or_path,config=config)
 
-def model_init_hyperbolic_vibert():
-   return Wav2Vec2ForSpeechClassificationViBERTHyperbolic.from_pretrained(model_name_or_path,config=config)
+def model_init_hyperbolic_vib():
+   return Wav2Vec2ForSpeechClassificationVibHyperbolic.from_pretrained(model_name_or_path,config=config)
 
 from transformers import TrainingArguments
 
@@ -929,7 +929,7 @@ trainer_base = Trainer(
 )
 
 trainer_vib = Trainer(
-    model_init=model_init_vibert,
+    model_init=model_init_vib,
     data_collator=data_collator,
     args=training_args,
     compute_metrics=compute_metrics,
@@ -941,7 +941,7 @@ trainer_vib = Trainer(
 )
 
 trainer_hyp_vib = Trainer(
-    model_init=model_init_hyperbolic_vibert,
+    model_init=model_init_hyperbolic_vib,
     data_collator=data_collator,
     args=training_args,
     compute_metrics=compute_metrics,
@@ -953,4 +953,4 @@ trainer_hyp_vib = Trainer(
 )
 
 # Training
-trainer_base.train()
+trainer_hyp_vib.train()
