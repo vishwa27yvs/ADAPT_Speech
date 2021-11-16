@@ -13,7 +13,13 @@
       
       cd hgcn
       
-- Create a folder named 'data' and paste the dataset specific files taken from 'data_files' folder. Similarly vocab.json can also be replaced with the dataset specific file
+- The datasets can be downloaded from the respective sources mentioned in the paper. Load the datasets in the respective folders mentioned below as this is the format followed by (dataset)_train.csv for reading the speeech files.
+
+	- URDU: create a folder named 'urdu-language-speech-dataset', load data here.
+	- ShEMO: create a folder named 'shemo-persian-speech-emotion-detection-database', load data here.
+	- EMOVO: create a folder named 'emovo', load data here.
+	
+- For data loading, create a folder named 'data' and paste the dataset specific files taken from 'data_files' folder. Similarly vocab.json can also be replaced with the dataset specific file
 Example command:	!cp /data_files/train_shemo.csv /data/train.csv
 
 ## Training
