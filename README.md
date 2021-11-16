@@ -13,7 +13,7 @@
       
       cd hgcn
       
-- The datasets can be downloaded from the respective sources mentioned in the paper. Load the datasets in the respective folders mentioned below as this is the format followed by (dataset)_train.csv for reading the speeech files.
+- The datasets can be downloaded from the respective sources mentioned in the paper. Load the datasets in the respective folders mentioned below as this is the format followed by (dataset)_train.csv for reading the speech files.
 
 	- URDU: create a folder named 'urdu-language-speech-dataset', load data here.
 	- ShEMO: create a folder named 'shemo-persian-speech-emotion-detection-database', load data here.
